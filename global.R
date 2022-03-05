@@ -11,7 +11,6 @@ library("data.table")
 library("tidyverse")
 library("readr")
 library("stringr")
-library("leaflet")
 library("BatchGetSymbols")
 library("GetDFPData")
 library("plyr")
@@ -37,7 +36,7 @@ library("rpart.plot")
 library('reticulate')
 library('rjson')
 
-setwd('/srv/shiny-server/Shiny')
+#setwd('/srv/shiny-server/Shiny')
 
 options(DT.options = list(scrollY="300px",scrollX="300px", 
                           pageLength = 100, 

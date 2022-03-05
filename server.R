@@ -558,18 +558,24 @@ shinyServer(function(input, output) {
       #Pegando o segundo elemento da lista retornada, que e o que contem os dados.
       DataSet = DataSet$df.tickers
       #Escrevendo os dados
-      write.csv(DataSet,paste0('/srv/shiny-server/Shiny/DataInfo/',input$inAtivoPredict,".csv"))
+      write.csv(DataSet,paste0(input$inAtivoPredict,".csv"))
       
       
       
       
-      use_condaenv('/home/joao_souza5/anaconda3/envs/dashboard')
+      use_condaenv("C:/Users/JoaoV/anaconda3/envs/Eldorado_Deus", required = TRUE)
       #Escrevendo os parametors
       ative_name = input$inAtivoPredict
-      py_run_string(paste0('ative_name = ',"'",ative_name,"'"))
+      
+      config <- vector(mode="list", length=1)
+      config[[1]] <- ative_name
+      file <- toJSON(config)
+      write(file, "configs.json")
+      
+      #py_run_string(paste0('ative_name = ',"'",ative_name,"'"))
       
       
-      py_run_file(file="/srv/shiny-server/Shiny/real_time.py")
+      py_run_file(file="real_time.py")
       
       valueBox(subtitle = as.character(py$predicao),value = "Nossa predição",color = "yellow"
         

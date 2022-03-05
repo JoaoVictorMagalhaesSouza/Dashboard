@@ -10,7 +10,10 @@ from feature_engineering import *
 from data_prep import *
 from models import *
 import os.path
+import json
 
+with open ('configs.json') as file:
+    ativo = json.load(file)[0]
 
 def predita(x_test, df):    
     #  Separing train and test
@@ -39,7 +42,7 @@ def main(df,preco_open, preco_high, preco_low, volume, price_adjusted, ret_closi
 #"Ative_name" vem do Shiny
 nome_ativo = ative_name
 
-df = pd.read_csv(f"/srv/shiny-server/Shiny/DataInfo/{nome_ativo}.csv")
+df = pd.read_csv(f"{nome_ativo}.csv")
 df['preco_fechamento_ant'] = df['price.close'].shift(1)
 df = df.drop(columns=['ref.date','ticker','Unnamed: 0','ret.adjusted.prices'])
 df = df.fillna(0)

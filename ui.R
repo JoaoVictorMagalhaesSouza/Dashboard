@@ -305,7 +305,7 @@ shinyUI(fluidPage(
                tabPanel("Predição de Valores",
                         tabsetPanel(
                           
-                          tabPanel("Catboost predictor",icon = icon("chart-line"),
+                          tabPanel("Estimador",icon = icon("chart-line"),
                                    fluidRow(column(3,
                                                    selectInput("inAtivoPredict",
                                                                strong("Escolha um ativo:"),
